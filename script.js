@@ -1,5 +1,5 @@
 const questions = document.querySelectorAll('.faq-accordion__question-wrapper');
-const answer = document.querySelectorAll('.faq-accordion__answer');
+const answers = document.querySelectorAll('.faq-accordion__answer');
 
 questions.forEach((question, index) => {
   question.addEventListener('click', () => {
@@ -9,11 +9,15 @@ questions.forEach((question, index) => {
 });
 
 function toggleAnswer(index) {
-  // if the answer is hidden, remove the hidden class
-  if (answer[index].classList.contains('hidden')) {
-    answer[index].classList.remove('hidden');
+  const ans = answers[index];
+  console.log(index, ans);
+  if (ans.classList.contains('active')) {
+    ans.classList.remove('active');
+    ans.style.maxHeight = null;
   } else {
-    answer[index].classList.add('hidden');
+    ans.classList.remove('hidden');
+    ans.classList.add('active');
+    ans.style.maxHeight = ans.scrollHeight + 'px';
   }
 }
 
